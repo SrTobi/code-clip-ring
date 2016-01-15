@@ -11,14 +11,26 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.sayHello"
-	],
-	"main": "./out/src/extension",
-	"contributes": {
-		"commands": [{
-			"command": "extension.sayHello",
-			"title": "Hello World"
-		}]
+		"onCommand:clipreg.copyToRing",
+		"onCommand:clipreg.pasteNextRingItem",
+		"onCommand:clipreg.pasteRingItem"
+    ],
+    "main": "./out/src/main",
+    "contributes": {
+        "commands": [
+            {
+                "command": "clipreg.copyToRing",
+                "title": "Copy to Ring"
+            },
+            {
+                "command": "clipreg.pasteNextRingItem",
+                "title": "Paste next Ring Item"
+            },
+            {
+                "command": "clipreg.pasteRingItem",
+                "title": "Paste Ring Item"
+            }
+        ]
 	},
 	"scripts": {
 		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
