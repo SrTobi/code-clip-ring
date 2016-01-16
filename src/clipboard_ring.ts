@@ -1,5 +1,5 @@
 "use strict";
-import * as clipboard from './clipboard';
+import * as clipboard from './utils';
 
 export interface ClipboardRing {
     
