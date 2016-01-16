@@ -7,5 +7,12 @@ export async function getContent(): Promise<string> {
 }
 
 export async function setContent<T>(content: T): Promise<T> {
-    return await clipboard.copy(content);
+    return new Promise<T>((resolve, reject) => {
+        clipboard.copy(content, (err) => {
+            if (err) 
+                reject(err);
+            else
+                resolve(content);
+        });
+    });
 }
