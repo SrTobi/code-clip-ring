@@ -10,7 +10,7 @@ async function copyToRing():  Promise<void> {
 
 async function pasteNextRingItem(): Promise<void> {
     let ring = await cring.getClipboardRing();
-    await ring.next();
+    await ring.next(1);
     await utils.vscodePaste();
 }
 

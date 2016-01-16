@@ -9,8 +9,8 @@ export interface ClipboardRing {
     pushNew(content: string): void;
     popCurrent(): void;
     
-    next(count?: number): void;
-    prev(count?: number): void;
+    next(count: number): Promise<void>;
+    prev(count: number): Promise<void>;
     
     size(): number;
     empty(): boolean;
@@ -57,7 +57,7 @@ class ClipboardRingImpl implements ClipboardRing {
         }
     }
     
-    public async next(count: number = 1): Promise<void> {
+    public async next(count: number): Promise<void> {
         if (this.empty() || count % this.size() == 0)
             return;
             
@@ -69,7 +69,7 @@ class ClipboardRingImpl implements ClipboardRing {
         await clipboard.setContent(this.getCurrent());
     }
     
-    public async prev(count: number = 1): Promise<void> {
+    public async prev(count: number): Promise<void> {
         if (this.empty() || count % this.size() == 0)
             return;
             
