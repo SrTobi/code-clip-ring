@@ -12,3 +12,5 @@ export async function vscodeCut(): Promise<void> {
 export async function vscodePaste(): Promise<void> {
     await vscode.commands.executeCommand("editor.action.clipboardPasteAction");
 }
+
+export async function pasteTo()

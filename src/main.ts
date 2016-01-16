@@ -8,13 +8,77 @@ async function copyToRing():  Promise<void> {
     await cring.getClipboardRing();
 }
 
-async function pasteNextRingItem(): Promise<void> {
-    let ring = await cring.getClipboardRing();
-    await ring.next(1);
-    await utils.vscodePaste();
+class SelectionSaver {
+    constructor(private _selections: vscode.Selection[]) {
+        SelectionSaver.sortSelections(this._selections);
+    }
+    
+    /**
+     * Checke if the argument is a new selection.
+     * A new selection must contain at least one selection that is different from the previous.
+     */
+    public isNewSelecton(selections: vscode.Selection[]) {
+        SelectionSaver.sortSelections(selections);
+        
+        let idx = 0;
+        for(let sel of selections) {
+            while (true) {
+                if (idx >= this._selections.length)
+                    return true;
+                
+                let cur = this._selections[idx];
+                ++idx;
+                
+                // TODO: Check if strings are equal or reset selectionsaver
+                if (cur.isEqual(sel))
+                    break;
+                    
+                let cmp = SelectionSaver.compareSelections(cur, sel);
+                if(cmp > 0)
+                    return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    static sortSelections(selections: vscode.Selection[]) {
+        selections.sort(SelectionSaver.compareSelections);
+    }
+    
+    static compareSelections(a: vscode.Selection, b: vscode.Selection) {
+        return a.start.line == b.start.line?
+                a.start.character - b.start.character
+                : a.start.line - b.start.line;
+    }
 }
 
-async function pasteRingItem(): Promise<void> {
+var LastSelection: SelectionSaver = null;
+
+async function pasteRingItem(): Promise<void> {  
+    let ring = await cring.getClipboardRing();
+    let editor = vscode.window.activeTextEditor;
+    
+    if (!editor || ring.empty())
+        return;
+    
+    let document = editor.document;
+    let selections = editor.selections;
+    
+    if (LastSelection && !LastSelection.isNewSelecton(selections)) {
+        await ring.next(1);
+    }
+    
+    await editor.edit((eb) => {
+        for (let sel of selections) {
+            eb.replace(sel, ring.getCurrent());
+        }
+    });
+    
+    LastSelection = new SelectionSaver(editor.selections);
+}
+
+async function selectAndPasteRingItem(): Promise<void> {
     let ring = await cring.getClipboardRing();
     
     if (ring.empty()) {
@@ -37,7 +101,7 @@ async function pasteRingItem(): Promise<void> {
             return;
         
         await ring.next(selectedItem.index);
-        await utils.vscodePaste();
+        await pasteRingItem();
     }
 }
 
@@ -48,9 +112,9 @@ export function activate(context: vscode.ExtensionContext) {
 	var disposable = vscode.commands.registerCommand('clipreg.copyToRing', copyToRing);
 	context.subscriptions.push(disposable);
     
-	disposable = vscode.commands.registerCommand('clipreg.pasteNextRingItem', pasteNextRingItem);
+	disposable = vscode.commands.registerCommand('clipreg.pasteRingItem', pasteRingItem);
 	context.subscriptions.push(disposable);
     
-	disposable = vscode.commands.registerCommand('clipreg.pasteRingItem', pasteRingItem);
+	disposable = vscode.commands.registerCommand('clipreg.selectAndPasteRingItem', selectAndPasteRingItem);
 	context.subscriptions.push(disposable);
 }

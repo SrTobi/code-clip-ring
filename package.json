@@ -12,8 +12,8 @@
     ],
     "activationEvents": [
         "onCommand:clipreg.copyToRing",
-        "onCommand:clipreg.pasteNextRingItem",
-        "onCommand:clipreg.pasteRingItem"
+        "onCommand:clipreg.pasteRingItem",
+        "onCommand:clipreg.selectAndPasteRingItem"
     ],
     "main": "./out/src/main",
     "contributes": {
@@ -23,12 +23,12 @@
                 "title": "Copy to Ring"
             },
             {
-                "command": "clipreg.pasteNextRingItem",
-                "title": "Paste next Ring Item"
-            },
-            {
                 "command": "clipreg.pasteRingItem",
                 "title": "Paste Ring Item"
+            },
+            {
+                "command": "clipreg.selectAndPasteRingItem",
+                "title": "Select and paste Ring Item"
             }
         ]
     },
