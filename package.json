@@ -13,7 +13,9 @@
     "activationEvents": [
         "onCommand:clipreg.copyToRing",
         "onCommand:clipreg.pasteRingItem",
-        "onCommand:clipreg.selectAndPasteRingItem"
+        "onCommand:clipreg.selectAndPasteRingItem",
+        "onCommand:clipreg.copyToRegister",
+        "onCommand:clipreg.pasteFromRegister"
     ],
     "main": "./out/src/main",
     "contributes": {
@@ -29,6 +31,14 @@
             {
                 "command": "clipreg.selectAndPasteRingItem",
                 "title": "Select and paste Ring Item"
+            },
+            {
+                "command": "clipreg.copyToRegister",
+                "title": "Copy to registry"
+            },
+            {
+                "command": "clipreg.pasteFromRegister",
+                "title": "Paste from registry"
             }
         ]
     },

@@ -1,6 +1,7 @@
 "use strict";
 import * as vscode from 'vscode';
 import * as ringcmd from './ring_commands';
+import * as regcmd from './registry_commands';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -14,5 +15,11 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
     
 	disposable = vscode.commands.registerCommand('clipreg.selectAndPasteRingItem', ringcmd.selectAndPasteRingItem);
+	context.subscriptions.push(disposable);
+    
+	disposable = vscode.commands.registerCommand('clipreg.copyToRegister', regcmd.copyToRegister);
+	context.subscriptions.push(disposable);
+    
+	disposable = vscode.commands.registerCommand('clipreg.pasteFromRegister', regcmd.pasteFromRegister);
 	context.subscriptions.push(disposable);
 }

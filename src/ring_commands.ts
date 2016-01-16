@@ -1,3 +1,4 @@
+"use strict";
 import * as vscode from 'vscode';
 import * as cring from './clipboard_ring';
 import * as utils from './utils';
