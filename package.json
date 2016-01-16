@@ -15,7 +15,17 @@
         "onCommand:clipreg.pasteRingItem",
         "onCommand:clipreg.selectAndPasteRingItem",
         "onCommand:clipreg.copyToRegister",
-        "onCommand:clipreg.pasteFromRegister"
+        "onCommand:clipreg.pasteFromRegister",
+        "onCommand:clipreg.copyShortRegister1",
+        "onCommand:clipreg.pasteFromShortRegister1",
+        "onCommand:clipreg.copyShortRegister2",
+        "onCommand:clipreg.pasteFromShortRegister2",
+        "onCommand:clipreg.copyShortRegister3",
+        "onCommand:clipreg.pasteFromShortRegister3",
+        "onCommand:clipreg.copyShortRegister4",
+        "onCommand:clipreg.pasteFromShortRegister4",
+        "onCommand:clipreg.copyShortRegister5",
+        "onCommand:clipreg.pasteFromShortRegister5"
     ],
     "main": "./out/src/main",
     "contributes": {

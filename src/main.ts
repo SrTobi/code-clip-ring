@@ -4,6 +4,17 @@ import * as ringcmd from './ring_commands';
 import * as regcmd from './registry_commands';
 
 
+function addRegisterCmd(count: number, context: vscode.ExtensionContext) {
+    
+    for (let i = 0; i < count; ++i) {
+        var disposable = vscode.commands.registerCommand('clipreg.copyShortRegister' + (i+1), async () => { await regcmd.copyToShortRegister(i);});
+        context.subscriptions.push(disposable);
+        
+        disposable = vscode.commands.registerCommand('clipreg.pasteFromShortRegister' + (i+1), async () => { await regcmd.pasteFromShortRegister(i);});
+        context.subscriptions.push(disposable);
+    }
+}
+
 export function activate(context: vscode.ExtensionContext) {
 
 	console.log('Extension "code-clip-registry" is now active!'); 
@@ -22,4 +33,6 @@ export function activate(context: vscode.ExtensionContext) {
     
 	disposable = vscode.commands.registerCommand('clipreg.pasteFromRegister', regcmd.pasteFromRegister);
 	context.subscriptions.push(disposable);
+    
+    addRegisterCmd(5, context);
 }
