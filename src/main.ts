@@ -4,6 +4,7 @@ import * as cring from './clipboard_ring';
 import * as utils from './utils';
 
 async function copyToRing():  Promise<void> {
+    await cring.getClipboardRing();
     await utils.vscodeCopy();
     await cring.getClipboardRing();
 }
@@ -100,6 +101,7 @@ async function selectAndPasteRingItem(): Promise<void> {
         if (!selectedItem)
             return;
         
+        LastSelection = null;
         await ring.next(selectedItem.index);
         await pasteRingItem();
     }
