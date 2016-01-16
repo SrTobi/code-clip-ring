@@ -1,3 +1,5 @@
+"use strict";
+import * as clipboard from './clipboard';
 
 export interface ClipboardRing {
     
@@ -7,23 +9,33 @@ export interface ClipboardRing {
     pushNew(content: string): void;
     popCurrent(): void;
     
-    next(): void;
-    prev(): void;
+    next(count?: number): void;
+    prev(count?: number): void;
+    
+    size(): number;
+    empty(): boolean;
 }
+
+var ClipboardRingContent: string[] = new Array<string>();
 
 class ClipboardRingImpl implements ClipboardRing {
     
-    private _content: string[] = new Array<string>();
-    private _maxSize: number;
-    
-    public constructor(maxSize?: number) {
-        this._maxSize = maxSize;
+    public constructor(
+                current: string,
+        private _content: string[],
+        private _maxSize?: number
+    ) {
+        this._maxSize = Math.max(2, this._maxSize);
+        
+        if (current && (this.empty() || this.getCurrent() != current)) {
+            this.pushNew(current);
+        }
     }
     
-    public getCurrent(): string {
-        if(this._content.length == 0)
-            return "";
-            
+    public getCurrent(): string {    
+        if (this.empty()) {
+            throw new Error("No current item!");
+        }        
         return this._content[0];
     }
     
@@ -33,19 +45,52 @@ class ClipboardRingImpl implements ClipboardRing {
     
     public pushNew(content: string): void {
         this._content.unshift(content);
+        
+        if (this._content.length > this._maxSize) {
+            this._content.pop();
+        }
     }
     
     public popCurrent(): void {
-        this._content.shift();
+        if (!this.empty()) {
+            this._content.shift();
+        }
     }
     
-    public next(): void {
-        let old = this._content.shift();
-        this._content.push(old);
+    public async next(count: number = 1): Promise<void> {
+        if (this.empty() || count % this.size() == 0)
+            return;
+            
+        while (count--) {
+            let old = this._content.shift();
+            this._content.push(old);
+        }
+        
+        await clipboard.setContent(this.getCurrent());
     }
     
-    public prev(): void {
-        let n = this._content.pop();
-        this._content.unshift(n);
+    public async prev(count: number = 1): Promise<void> {
+        if (this.empty() || count % this.size() == 0)
+            return;
+            
+        while (count--) {
+            let n = this._content.pop();
+            this._content.unshift(n);
+        }
+        
+        await clipboard.setContent(this.getCurrent());
     }
+    
+    public size(): number {
+        return this._content.length;
+    }
+    
+    public empty(): boolean {
+        return this.size() == 0;
+    }
+}
+
+export async function getClipboardRing(): Promise<ClipboardRing> {
+    let current = await clipboard.getContent();
+    return new ClipboardRingImpl(current, ClipboardRingContent, 10);
 }
