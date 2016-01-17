@@ -86,11 +86,11 @@ export async function pasteRingItem(): Promise<void> {
     LastSelection = new SelectionSaver(editor.selections);
 }
 
-export async function selectAndPasteRingItem(): Promise<void> {
-    let ring = await cring.getClipboardRing();
+async function selectRingItem(ring: cring.ClipboardRing, placeHolder: string): Promise<number> {
     
     if (ring.empty()) {
         await vscode.window.showErrorMessage("No current clipboard item");
+        return -1;
     } else {
         interface RingItemPick extends vscode.QuickPickItem {
             index: number;
@@ -104,12 +104,43 @@ export async function selectAndPasteRingItem(): Promise<void> {
                 description: null
             }
         });
-        let selectedItem = await vscode.window.showQuickPick(items);
+        
+        let opt: vscode.QuickPickOptions = {
+            placeHolder: placeHolder
+        };
+        
+        let selectedItem = await vscode.window.showQuickPick(items, opt);
         if (!selectedItem)
-            return;
+            return -1;
+        
+        return selectedItem.index;
+    }
+}
+
+export async function selectAndPasteRingItem(): Promise<void> {
+    
+    let ring = await cring.getClipboardRing();
+    let itemIdx = await selectRingItem(ring, "Item to paste");
+    
+    if (itemIdx >= 0) {
         
         LastSelection = null;
-        await ring.next(selectedItem.index);
+        await ring.next(itemIdx);
         await pasteRingItem();
     }
+}
+
+export async function removeRingItems() {
+   
+    let ring = await cring.getClipboardRing();
+    let itemIdx = await selectRingItem(ring, "Item to remove");
+    
+    if (itemIdx >= 0) {
+        ring.remove(itemIdx);
+    }
+}
+
+export async function removeAllRingItem() {
+   let ring = await cring.getClipboardRing();
+   ring.clear();
 }

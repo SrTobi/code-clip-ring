@@ -14,6 +14,9 @@ export interface ClipboardRing {
     
     size(): number;
     empty(): boolean;
+    
+    clear(): void;
+    remove(idx: number): void;
 }
 
 var ClipboardRingContent: string[] = new Array<string>();
@@ -87,6 +90,14 @@ class ClipboardRingImpl implements ClipboardRing {
     
     public empty(): boolean {
         return this.size() == 0;
+    }
+    
+    public clear(): void {
+        this._content.splice(0);
+    }
+    
+    public remove(idx: number): void {
+        this._content.splice(idx, 1);
     }
 }
 

@@ -34,6 +34,12 @@ export function activate(context: vscode.ExtensionContext) {
 	disposable = vscode.commands.registerCommand('clipreg.selectAndPasteRingItem', ringcmd.selectAndPasteRingItem);
 	context.subscriptions.push(disposable);
     
+	disposable = vscode.commands.registerCommand('clipreg.removeAllRingItems', ringcmd.removeAllRingItem);
+	context.subscriptions.push(disposable);
+    
+	disposable = vscode.commands.registerCommand('clipreg.removeRingItem', ringcmd.removeRingItems);
+	context.subscriptions.push(disposable);
+    
 	disposable = vscode.commands.registerCommand('clipreg.copyToRegister', regcmd.copyToRegister);
 	context.subscriptions.push(disposable);
     
