@@ -4,12 +4,17 @@
     "description": "A Visual Studio Code plugin for a more advanced clipboard",
     "version": "0.0.1",
     "publisher": "SirTobi",
+    "author": {
+        "name": "Tobias Kahlert (a.k.a SirTobi)"
+    },
+    "homepage": "https://github.com/SrTobi/code-clip-registry",
     "engines": {
         "vscode": "^0.10.1"
     },
     "categories": [
         "Other"
     ],
+    "icon": "images/icon.png",
     "activationEvents": [
         "onCommand:clipreg.copyToRing",
         "onCommand:clipreg.pasteRingItem",
@@ -53,8 +58,15 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "vscode:prepublish": "npm install && node ./node_modules/vscode/bin/compile && npm prune --production",
         "compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SrTobi/code-clip-registry/"
+    },
+    "bugs": {
+        "url": "https://github.com/SrTobi/code-clip-registry/issues"
     },
     "devDependencies": {
         "typescript": "^1.6.2",
