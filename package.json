@@ -17,19 +17,26 @@
     "icon": "images/icon.png",
     "activationEvents": [
         "onCommand:clipreg.copyToRing",
+        "onCommand:clipreg.cutToRing",
         "onCommand:clipreg.pasteRingItem",
         "onCommand:clipreg.selectAndPasteRingItem",
         "onCommand:clipreg.copyToRegister",
+        "onCommand:clipreg.cutToRegister",
         "onCommand:clipreg.pasteFromRegister",
-        "onCommand:clipreg.copyShortRegister1",
+        "onCommand:clipreg.copyToShortRegister1",
+        "onCommand:clipreg.cutToShortRegister1",
         "onCommand:clipreg.pasteFromShortRegister1",
-        "onCommand:clipreg.copyShortRegister2",
+        "onCommand:clipreg.copyToShortRegister2",
+        "onCommand:clipreg.cutToShortRegister2",
         "onCommand:clipreg.pasteFromShortRegister2",
-        "onCommand:clipreg.copyShortRegister3",
+        "onCommand:clipreg.copyToShortRegister3",
+        "onCommand:clipreg.cutToShortRegister3",
         "onCommand:clipreg.pasteFromShortRegister3",
-        "onCommand:clipreg.copyShortRegister4",
+        "onCommand:clipreg.copyToShortRegister4",
+        "onCommand:clipreg.cutToShortRegister4",
         "onCommand:clipreg.pasteFromShortRegister4",
-        "onCommand:clipreg.copyShortRegister5",
+        "onCommand:clipreg.copyToShortRegister5",
+        "onCommand:clipreg.cutToShortRegister5",
         "onCommand:clipreg.pasteFromShortRegister5"
     ],
     "main": "./out/src/main",
@@ -38,6 +45,10 @@
             {
                 "command": "clipreg.copyToRing",
                 "title": "Copy to Ring"
+            },
+            {
+                "command": "clipreg.cutToRing",
+                "title": "Cut to Ring"
             },
             {
                 "command": "clipreg.pasteRingItem",
@@ -50,6 +61,10 @@
             {
                 "command": "clipreg.copyToRegister",
                 "title": "Copy to registry"
+            },
+            {
+                "command": "clipreg.cutToRegister",
+                "title": "Cut to registry"
             },
             {
                 "command": "clipreg.pasteFromRegister",

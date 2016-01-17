@@ -9,6 +9,13 @@ export async function copyToRing():  Promise<void> {
     await cring.getClipboardRing();
 }
 
+export async function cutToRing():  Promise<void> {
+    await cring.getClipboardRing();
+    await utils.vscodeCut();
+    await cring.getClipboardRing();
+}
+
+
 class SelectionSaver {
     constructor(private _selections: vscode.Selection[]) {
         SelectionSaver.sortSelections(this._selections);

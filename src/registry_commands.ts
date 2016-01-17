@@ -42,7 +42,7 @@ export async function pasteFromNamedRegister(name: string) {
     });
 }
 
-export async function copyToRegister() {
+export async function copyToRegister(cut: boolean) {
     
     let editor = vscode.window.activeTextEditor;
     if (!editor) {
@@ -62,11 +62,11 @@ export async function copyToRegister() {
             reg = DefaultRegister;
         }
         
-        await copyToNamedRegister(reg);
+        await copyToNamedRegister(reg, cut);
     }
 }
 
-export async function copyToNamedRegister(name: string): Promise<void> {
+export async function copyToNamedRegister(name: string, cut: boolean): Promise<void> {
     
     let editor = vscode.window.activeTextEditor;
     if (!editor) {
@@ -74,18 +74,26 @@ export async function copyToNamedRegister(name: string): Promise<void> {
     }
     
     let selection = editor.selection;
+    let delRange: vscode.Range = selection;
     let doc = editor.document;
     if (selection.isEmpty) {
         Registry[name] = doc.lineAt(selection.active.line).text;
+        delRange = doc.lineAt(selection.active.line).rangeIncludingLineBreak;
     } else {
         Registry[name] = doc.getText(selection);
+    }
+    
+    if(cut) {
+        editor.edit(e => {
+            e.delete(delRange);
+        });
     }
 }
 
 let ShortRegNames = ["a", "b", "c", "d", "e"];
 
-export async function copyToShortRegister(idx: number): Promise<void> {
-    copyToNamedRegister(ShortRegNames[idx]);
+export async function copyToShortRegister(idx: number, cut: boolean): Promise<void> {
+    copyToNamedRegister(ShortRegNames[idx], cut);
 }
 export async function pasteFromShortRegister(idx: number): Promise<void> {
     pasteFromNamedRegister(ShortRegNames[idx]);
