@@ -22,6 +22,8 @@
         "onCommand:clipreg.cutToRing",
         "onCommand:clipreg.pasteRingItem",
         "onCommand:clipreg.selectAndPasteRingItem",
+        "onCommand:clipreg.removeAllRegisters",
+        "onCommand:clipreg.removeRegister",
         "onCommand:clipreg.copyToRegister",
         "onCommand:clipreg.cutToRegister",
         "onCommand:clipreg.pasteFromRegister",
@@ -79,6 +81,14 @@
             {
                 "command": "clipreg.pasteFromRegister",
                 "title": "Paste from Registry"
+            },
+            {
+                "command": "clipreg.removeAllRegisters",
+                "title": "Remove all Registers"
+            },
+            {
+                "command": "clipreg.removeRegister",
+                "title": "Remove Register"
             }
         ]
     },

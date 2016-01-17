@@ -22,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	console.log('Extension "code-clip-registry" is now active!'); 
 
+    // Ring commands
 	var disposable = vscode.commands.registerCommand('clipreg.copyToRing', ringcmd.copyToRing);
 	context.subscriptions.push(disposable);
     
@@ -40,6 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 	disposable = vscode.commands.registerCommand('clipreg.removeRingItem', ringcmd.removeRingItems);
 	context.subscriptions.push(disposable);
     
+    // Register commands
 	disposable = vscode.commands.registerCommand('clipreg.copyToRegister', regcmd.copyToRegister);
 	context.subscriptions.push(disposable);
     
@@ -48,6 +50,13 @@ export function activate(context: vscode.ExtensionContext) {
     
 	disposable = vscode.commands.registerCommand('clipreg.pasteFromRegister', regcmd.pasteFromRegister);
 	context.subscriptions.push(disposable);
+    
+	disposable = vscode.commands.registerCommand('clipreg.removeAllRegisters', regcmd.removeAllRegisters);
+	context.subscriptions.push(disposable);
+    
+	disposable = vscode.commands.registerCommand('clipreg.removeRegister', regcmd.removeRegister);
+	context.subscriptions.push(disposable);
+    
     
     addRegisterCmd(5, context);
 }

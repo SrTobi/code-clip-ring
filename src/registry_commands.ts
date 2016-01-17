@@ -95,6 +95,31 @@ let ShortRegNames = ["a", "b", "c", "d", "e"];
 export async function copyToShortRegister(idx: number, cut: boolean): Promise<void> {
     copyToNamedRegister(ShortRegNames[idx], cut);
 }
+
 export async function pasteFromShortRegister(idx: number): Promise<void> {
     pasteFromNamedRegister(ShortRegNames[idx]);
+}
+
+export async function removeAllRegisters() {
+    Registry = {};
+}
+
+export async function removeRegister() {
+    let regs = new Array<vscode.QuickPickItem>();
+    for(let reg in Registry) {
+        regs.push({
+            label: reg,
+            description: Registry[reg]
+        });
+    }
+    
+    let reg = await vscode.window.showQuickPick(regs);
+    if(reg) {
+        let name = reg.label;
+        if(name.length == 0) {
+            name = DefaultRegister;
+        }
+        
+        delete Registry[name];
+    }
 }
