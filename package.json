@@ -1,13 +1,13 @@
 {
-    "name": "code-clip-registry",
-    "displayName": "Clipboard Registry",
+    "name": "code-clip-ring",
+    "displayName": "Clipboard Ring",
     "description": "A Visual Studio Code plugin for a more advanced clipboard",
     "version": "0.0.1",
     "publisher": "SirTobi",
     "author": {
         "name": "Tobias Kahlert (a.k.a SirTobi)"
     },
-    "homepage": "https://github.com/SrTobi/code-clip-registry",
+    "homepage": "https://github.com/SrTobi/code-clip-ring",
     "engines": {
         "vscode": "^0.10.1"
     },
@@ -16,79 +16,39 @@
     ],
     "icon": "images/icon.png",
     "activationEvents": [
-        "onCommand:clipreg.removeAllRingItems",
-        "onCommand:clipreg.removeRingItem",
-        "onCommand:clipreg.copyToRing",
-        "onCommand:clipreg.cutToRing",
-        "onCommand:clipreg.pasteRingItem",
-        "onCommand:clipreg.selectAndPasteRingItem",
-        "onCommand:clipreg.removeAllRegisters",
-        "onCommand:clipreg.removeRegister",
-        "onCommand:clipreg.copyToRegister",
-        "onCommand:clipreg.cutToRegister",
-        "onCommand:clipreg.pasteFromRegister",
-        "onCommand:clipreg.copyToShortRegister1",
-        "onCommand:clipreg.cutToShortRegister1",
-        "onCommand:clipreg.pasteFromShortRegister1",
-        "onCommand:clipreg.copyToShortRegister2",
-        "onCommand:clipreg.cutToShortRegister2",
-        "onCommand:clipreg.pasteFromShortRegister2",
-        "onCommand:clipreg.copyToShortRegister3",
-        "onCommand:clipreg.cutToShortRegister3",
-        "onCommand:clipreg.pasteFromShortRegister3",
-        "onCommand:clipreg.copyToShortRegister4",
-        "onCommand:clipreg.cutToShortRegister4",
-        "onCommand:clipreg.pasteFromShortRegister4",
-        "onCommand:clipreg.copyToShortRegister5",
-        "onCommand:clipreg.cutToShortRegister5",
-        "onCommand:clipreg.pasteFromShortRegister5"
+        "onCommand:clipring.removeAllRingItems",
+        "onCommand:clipring.removeRingItem",
+        "onCommand:clipring.copyToRing",
+        "onCommand:clipring.cutToRing",
+        "onCommand:clipring.pasteRingItem",
+        "onCommand:clipring.selectAndPasteRingItem"
     ],
     "main": "./out/src/main",
     "contributes": {
         "commands": [
             {
-                "command": "clipreg.removeAllRingItems",
+                "command": "clipring.removeAllRingItems",
                 "title": "Remove all Ring Items"
             },
             {
-                "command": "clipreg.removeRingItem",
+                "command": "clipring.removeRingItem",
                 "title": "Remove Ring Item"
             },
             {
-                "command": "clipreg.copyToRing",
+                "command": "clipring.copyToRing",
                 "title": "Copy to Ring"
             },
             {
-                "command": "clipreg.cutToRing",
+                "command": "clipring.cutToRing",
                 "title": "Cut to Ring"
             },
             {
-                "command": "clipreg.pasteRingItem",
+                "command": "clipring.pasteRingItem",
                 "title": "Paste Ring Item"
             },
             {
-                "command": "clipreg.selectAndPasteRingItem",
+                "command": "clipring.selectAndPasteRingItem",
                 "title": "Select and paste Ring Item"
-            },
-            {
-                "command": "clipreg.copyToRegister",
-                "title": "Copy to Registry"
-            },
-            {
-                "command": "clipreg.cutToRegister",
-                "title": "Cut to Registry"
-            },
-            {
-                "command": "clipreg.pasteFromRegister",
-                "title": "Paste from Registry"
-            },
-            {
-                "command": "clipreg.removeAllRegisters",
-                "title": "Remove all Registers"
-            },
-            {
-                "command": "clipreg.removeRegister",
-                "title": "Remove Register"
             }
         ]
     },
@@ -98,10 +58,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/SrTobi/code-clip-registry/"
+        "url": "https://github.com/SrTobi/code-clip-ring/"
     },
     "bugs": {
-        "url": "https://github.com/SrTobi/code-clip-registry/issues"
+        "url": "https://github.com/SrTobi/code-clip-ring/issues"
     },
     "devDependencies": {
         "typescript": "^1.6.2",
