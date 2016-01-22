@@ -65,7 +65,7 @@ class SelectionSaver {
 var LastSelection: SelectionSaver = null;
 
 export async function pasteRingItem(ring: cring.ClipboardRing): Promise<void> {  
-    if (!ring) {
+    if (ring == null) {
         ring = await cring.getClipboardRing();
     }
     let editor = vscode.window.activeTextEditor;
@@ -73,7 +73,6 @@ export async function pasteRingItem(ring: cring.ClipboardRing): Promise<void> {
     if (!editor || ring.empty())
         return;
     
-    let document = editor.document;
     let selections = editor.selections;
     
     if (LastSelection && !LastSelection.isNewSelecton(selections)) {

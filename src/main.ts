@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 	disposable = vscode.commands.registerCommand('clipring.cutToRing', ringcmd.cutToRing);
 	context.subscriptions.push(disposable);
     
-	disposable = vscode.commands.registerCommand('clipring.pasteRingItem', ringcmd.pasteRingItem);
+	disposable = vscode.commands.registerCommand('clipring.pasteRingItem', () => ringcmd.pasteRingItem(null));
 	context.subscriptions.push(disposable);
     
 	disposable = vscode.commands.registerCommand('clipring.selectAndPasteRingItem', ringcmd.selectAndPasteRingItem);
