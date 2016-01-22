@@ -63,6 +63,11 @@
                     "title": "Transfer item to clipboard when item is pasted.",
                     "default": true,
                     "type": "boolean" 
+                },
+                "clipring.backupClipboard": {
+                    "title": "Before any clipboard operation the current clipboard content is added to the ring. Set backupClipboard to false to disable this behavior.",
+                    "default": true,
+                    "type": "boolean"
                 }
             }
         },

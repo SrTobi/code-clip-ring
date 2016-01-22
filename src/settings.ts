@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 export interface Settings {
     maxRingItems: number;
     itemToClipboardOnPaste: boolean;
+    backupClipboard: boolean;
 }
 
 export function getSettings(): Settings {
@@ -12,6 +13,7 @@ export function getSettings(): Settings {
     
     return {
       maxRingItems: setting.get<number>("maxRingItems"),
-      itemToClipboardOnPaste: setting.get<boolean>("itemToClipboardOnPaste")  
+      itemToClipboardOnPaste: setting.get<boolean>("itemToClipboardOnPaste"),
+      backupClipboard: setting.get<boolean>("backupClipboard")
     };
 }

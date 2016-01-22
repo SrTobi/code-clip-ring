@@ -116,7 +116,9 @@ class ClipboardRingImpl implements ClipboardRing {
     }
 }
 
-export async function getClipboardRing(): Promise<ClipboardRing> {
-    let current = await clipboard.getContent();
-    return new ClipboardRingImpl(current, ClipboardRingContent, getSettings().maxRingItems);
+export async function getClipboardRing(forceBackup: boolean): Promise<ClipboardRing> {
+    let settings = getSettings();
+    let backup = forceBackup || settings.backupClipboard;
+    let current = backup ? await clipboard.getContent() : null;
+    return new ClipboardRingImpl(current, ClipboardRingContent, settings.maxRingItems);
 }

@@ -5,15 +5,15 @@ import * as utils from './utils';
 import {getSettings} from './settings';
 
 export async function copyToRing():  Promise<void> {
-    await cring.getClipboardRing();
+    await cring.getClipboardRing(false);
     await utils.vscodeCopy();
-    await cring.getClipboardRing();
+    await cring.getClipboardRing(true);
 }
 
 export async function cutToRing():  Promise<void> {
-    await cring.getClipboardRing();
+    await cring.getClipboardRing(false);
     await utils.vscodeCut();
-    await cring.getClipboardRing();
+    await cring.getClipboardRing(true);
 }
 
 
@@ -66,7 +66,7 @@ var LastSelection: SelectionSaver = null;
 
 export async function pasteRingItem(ring: cring.ClipboardRing): Promise<void> {  
     if (ring == null) {
-        ring = await cring.getClipboardRing();
+        ring = await cring.getClipboardRing(false);
     }
     let editor = vscode.window.activeTextEditor;
     
@@ -125,7 +125,7 @@ async function selectRingItem(ring: cring.ClipboardRing, placeHolder: string): P
 
 export async function selectAndPasteRingItem(): Promise<void> {
     
-    let ring = await cring.getClipboardRing();
+    let ring = await cring.getClipboardRing(false);
     let itemIdx = await selectRingItem(ring, "Item to paste");
     
     if (itemIdx >= 0) {
@@ -138,7 +138,7 @@ export async function selectAndPasteRingItem(): Promise<void> {
 
 export async function removeRingItems() {
    
-    let ring = await cring.getClipboardRing();
+    let ring = await cring.getClipboardRing(false);
     let itemIdx = await selectRingItem(ring, "Item to remove");
     
     if (itemIdx >= 0) {
@@ -147,6 +147,6 @@ export async function removeRingItems() {
 }
 
 export async function removeAllRingItem() {
-   let ring = await cring.getClipboardRing();
+   let ring = await cring.getClipboardRing(false);
    ring.clear();
 }
