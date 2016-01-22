@@ -65,7 +65,24 @@
                     "type": "boolean" 
                 }
             }
-        }
+        },
+        "keybindings": [
+            {
+                "key": "ctrl+c",
+                "when": "editorFocus",
+                "command": "clipring.copyToRing"
+            },
+            {
+                "key": "ctrl+x",
+                "when": "editorFocus",
+                "command": "clipging.cutToRing"
+            },
+            {
+                "key": "ctrl+shift+v",
+                "when": "editorFocus",
+                "command": "clipring.pasteRingItem"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm install && node ./node_modules/vscode/bin/compile && npm prune --production",
