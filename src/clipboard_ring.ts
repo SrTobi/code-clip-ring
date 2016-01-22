@@ -33,7 +33,17 @@ class ClipboardRingImpl implements ClipboardRing {
         
         this.popToMaxSize();
         
-        if (current && (this.empty() || this.getCurrent() != current)) {
+        if (current) {
+            // find item and rotate to it
+            for(let idx = 0; idx < this._content.length; ++idx) {
+                let item = this._content[idx];
+                if (item == current)
+                {
+                    this.next(idx);
+                    return;
+                }
+            }
+            
             this.pushNew(current);
         }
     }

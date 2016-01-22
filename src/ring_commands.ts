@@ -64,8 +64,10 @@ class SelectionSaver {
 
 var LastSelection: SelectionSaver = null;
 
-export async function pasteRingItem(): Promise<void> {  
-    let ring = await cring.getClipboardRing();
+export async function pasteRingItem(ring: cring.ClipboardRing): Promise<void> {  
+    if (!ring) {
+        ring = await cring.getClipboardRing();
+    }
     let editor = vscode.window.activeTextEditor;
     
     if (!editor || ring.empty())
@@ -131,7 +133,7 @@ export async function selectAndPasteRingItem(): Promise<void> {
         
         LastSelection = null;
         await ring.next(itemIdx);
-        await pasteRingItem();
+        await pasteRingItem(ring);
     }
 }
 
