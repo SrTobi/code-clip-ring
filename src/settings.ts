@@ -4,12 +4,14 @@ import * as vscode from 'vscode';
 
 export interface Settings {
     maxRingItems: number;
+    itemToClipboardOnPaste: boolean;
 }
 
 export function getSettings(): Settings {
     let setting = vscode.workspace.getConfiguration("clipring");
     
     return {
-      maxRingItems: setting.get<number>("maxRingItems")  
+      maxRingItems: setting.get<number>("maxRingItems"),
+      itemToClipboardOnPaste: setting.get<boolean>("itemToClipboardOnPaste")  
     };
 }

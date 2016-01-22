@@ -58,6 +58,11 @@
                     "title": "Maximal items in the clipboard ring. Overflowing items will be removed.",
                     "default": 10,
                     "type": "integer"
+                },
+                "clipring.itemToClipboardOnPaste": {
+                    "title": "Transfer item to clipboard when item is pasted.",
+                    "default": true,
+                    "type": "boolean" 
                 }
             }
         }

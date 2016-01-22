@@ -2,6 +2,7 @@
 import * as vscode from 'vscode';
 import * as cring from './clipboard_ring';
 import * as utils from './utils';
+import {getSettings} from './settings';
 
 export async function copyToRing():  Promise<void> {
     await cring.getClipboardRing();
@@ -82,6 +83,10 @@ export async function pasteRingItem(): Promise<void> {
             eb.replace(sel, ring.getCurrent());
         }
     });
+    
+    if(getSettings().itemToClipboardOnPaste) {
+        await utils.setContent(ring.getCurrent());
+    }
     
     LastSelection = new SelectionSaver(editor.selections);
 }

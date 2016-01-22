@@ -69,8 +69,6 @@ class ClipboardRingImpl implements ClipboardRing {
             let old = this._content.shift();
             this._content.push(old);
         }
-        
-        await clipboard.setContent(this.getCurrent());
     }
     
     public async prev(count: number): Promise<void> {
