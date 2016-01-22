@@ -50,7 +50,17 @@
                 "command": "clipring.selectAndPasteRingItem",
                 "title": "Select and paste Ring Item"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "",
+            "properties": {
+                "clipring.maxRingItems": {
+                    "title": "Maximal items in the clipboard ring. Overflowing items will be removed.",
+                    "default": 10,
+                    "type": "integer"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm install && node ./node_modules/vscode/bin/compile && npm prune --production",

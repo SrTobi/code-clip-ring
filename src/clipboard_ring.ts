@@ -1,5 +1,6 @@
 "use strict";
 import * as clipboard from './utils';
+import {getSettings} from './settings';
 
 export interface ClipboardRing {
     
@@ -30,6 +31,8 @@ class ClipboardRingImpl implements ClipboardRing {
     ) {
         this._maxSize = Math.max(2, this._maxSize);
         
+        this.popToMaxSize();
+        
         if (current && (this.empty() || this.getCurrent() != current)) {
             this.pushNew(current);
         }
@@ -49,9 +52,7 @@ class ClipboardRingImpl implements ClipboardRing {
     public pushNew(content: string): void {
         this._content.unshift(content);
         
-        if (this._content.length > this._maxSize) {
-            this._content.pop();
-        }
+        this.popToMaxSize();
     }
     
     public popCurrent(): void {
@@ -99,9 +100,15 @@ class ClipboardRingImpl implements ClipboardRing {
     public remove(idx: number): void {
         this._content.splice(idx, 1);
     }
+    
+    private popToMaxSize(): void {        
+        while (this._content.length > this._maxSize) {
+            this._content.pop();
+        }
+    }
 }
 
 export async function getClipboardRing(): Promise<ClipboardRing> {
     let current = await clipboard.getContent();
-    return new ClipboardRingImpl(current, ClipboardRingContent, 10);
+    return new ClipboardRingImpl(current, ClipboardRingContent, getSettings().maxRingItems);
 }
