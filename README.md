@@ -48,3 +48,7 @@ Use `"clipring.itemToClipboardOnPaste"` to disable this behavior.
 "clipring.backupClipboard": true,
 "clipring.itemToClipboardOnPaste": true,
 ```````````````
+
+## Contributing
+
+Feel free to contribute to this extension. Please read the [CONTRIBUTING.md](/CONTRIBUTING.md).
