@@ -15,6 +15,10 @@
         "Other"
     ],
     "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#252526",
+        "theme": "dark"
+    },
     "activationEvents": [
         "onCommand:clipring.removeAllRingItems",
         "onCommand:clipring.removeRingItem",
