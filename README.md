@@ -6,6 +6,10 @@ Paste multiple times from the clipboard to cicle through the items.
 ## How it works
 Use `ctrl+c` or `ctrl+x` to copy or cut as usual. The copied content will also be added to the clipboard ring.
 Use `ctrl+shift+v` to paste from the clipboard ring. Press `ctrl+shift+v` multiple times to cicle through the clipboard ring.
+Use the `Select and paste Ring Item` command to paste a specific ring item.
+Use `Remove Ring Item` and `Remove all Ring Items` to remove a specific or all ring items.
+
+![Preview](/images/preview.gif?raw=true)
 
 ## Settings
 ### Use ctrl+v to paste from the clipboard ring
