@@ -1,11 +1,11 @@
 # Clipboard Ring
 Extend your clipboard with the clipboard ring.
 Every time you copy or cut to the clipboard the content will also be added to the clipboard ring.
-Paste multiple times from the clipboard to cicle through the items.
+Paste multiple times from the clipboard to circle through the items.
 
 ## How it works
 Use `ctrl+c` or `ctrl+x` to copy or cut as usual. The copied content will also be added to the clipboard ring.
-Use `ctrl+shift+v` to paste from the clipboard ring. Press `ctrl+shift+v` multiple times to cicle through the clipboard ring.
+Use `ctrl+shift+v` to paste from the clipboard ring. Press `ctrl+shift+v` multiple times to circle through the clipboard ring.
 Use the `Select and paste Ring Item` command to paste a specific ring item.
 Use `Remove Ring Item` and `Remove all Ring Items` to remove a specific or all ring items.
 
