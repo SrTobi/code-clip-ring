@@ -84,7 +84,7 @@
             {
                 "key": "ctrl+x",
                 "when": "editorFocus",
-                "command": "clipging.cutToRing"
+                "command": "clipring.cutToRing"
             },
             {
                 "key": "ctrl+shift+v",
