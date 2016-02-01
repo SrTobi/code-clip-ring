@@ -3,7 +3,14 @@ import * as vscode from 'vscode';
 import * as clipboard from 'copy-paste';
 
 export async function getContent(): Promise<string> {
-    return await clipboard.paste();
+    return await new Promise<string>((resolve, reject) => {
+        clipboard.paste((err, content) => {
+            if(err)
+                reject(err);
+            else
+                resolve(content);
+        });
+    });
 }
 
 export async function setContent<T>(content: T): Promise<T> {
