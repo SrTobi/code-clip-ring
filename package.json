@@ -94,7 +94,7 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm install && node ./node_modules/vscode/bin/compile && npm prune --production",
+        "vscode:prepublish": "npm install && node ./node_modules/vscode/bin/compile",
         "compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
     },
     "repository": {
