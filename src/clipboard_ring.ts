@@ -1,4 +1,3 @@
-"use strict";
 import * as clipboard from './utils';
 import {getSettings} from './settings';
 

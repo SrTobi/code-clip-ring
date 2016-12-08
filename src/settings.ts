@@ -1,5 +1,3 @@
-"use strict";
-import * as clipboard from './utils';
 import * as vscode from 'vscode';
 
 export interface Settings {
