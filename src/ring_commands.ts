@@ -63,7 +63,7 @@ class SelectionSaver {
 
 var LastSelection: SelectionSaver | null = null;
 
-export async function pasteRingItem(ring: cring.ClipboardRing): Promise<void> {  
+export async function pasteRingItem(ring: cring.ClipboardRing | null): Promise<void> {  
     if (ring == null) {
         ring = await cring.getClipboardRing(false);
     }
@@ -80,7 +80,7 @@ export async function pasteRingItem(ring: cring.ClipboardRing): Promise<void> {
     
     await editor.edit((eb) => {
         for (let sel of selections) {
-            eb.replace(sel, ring.getCurrent());
+            eb.replace(sel, ring!.getCurrent());
         }
     });
     
@@ -106,7 +106,7 @@ async function selectRingItem(ring: cring.ClipboardRing, placeHolder: string): P
             return {
                 label: item,
                 index: idx++,
-                description: null
+                description: ""
             }
         });
         

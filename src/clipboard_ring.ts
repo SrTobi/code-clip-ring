@@ -24,9 +24,9 @@ var ClipboardRingContent: string[] = new Array<string>();
 class ClipboardRingImpl implements ClipboardRing {
     
     public constructor(
-                current: string,
+                current: string | null,
         private _content: string[],
-        private _maxSize?: number
+        private _maxSize: number
     ) {
         this._maxSize = Math.max(2, this._maxSize);
         
@@ -75,7 +75,7 @@ class ClipboardRingImpl implements ClipboardRing {
             return;
             
         while (count--) {
-            let old = this._content.shift();
+            let old = this._content.shift()!;
             this._content.push(old);
         }
     }
@@ -85,7 +85,7 @@ class ClipboardRingImpl implements ClipboardRing {
             return;
             
         while (count--) {
-            let n = this._content.pop();
+            let n = this._content.pop()!;
             this._content.unshift(n);
         }
         

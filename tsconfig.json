@@ -3,9 +3,14 @@
 		"module": "commonjs",
 		"target": "es6",
 		"outDir": "out",
-		"noLib": true,
+        "lib": [
+            "es6"
+		],
 		"sourceMap": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+		"strictNullChecks": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true
 	},
 	"exclude": [
 		"node_modules"
