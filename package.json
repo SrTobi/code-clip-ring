@@ -78,16 +78,19 @@
         "keybindings": [
             {
                 "key": "ctrl+c",
+                "mac": "cmd+c",
                 "when": "editorFocus",
                 "command": "clipring.copyToRing"
             },
             {
                 "key": "ctrl+x",
+                "mac": "cmd+x",
                 "when": "editorFocus",
                 "command": "clipring.cutToRing"
             },
             {
                 "key": "ctrl+shift+v",
+                "mac": "cmd+shift+v",
                 "when": "editorFocus",
                 "command": "clipring.pasteRingItem"
             }
