@@ -27,7 +27,7 @@
         "onCommand:clipring.pasteRingItem",
         "onCommand:clipring.selectAndPasteRingItem"
     ],
-    "main": "./out/src/main",
+    "main": "./out/main",
     "contributes": {
         "commands": [
             {
