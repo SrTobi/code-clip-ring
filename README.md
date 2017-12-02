@@ -21,7 +21,7 @@ If you want to use `ctrl+v` to paste from clipboard add the following keyboard d
 {
     "key":     "ctrl+v",
     "when":    "editorFocus",
-    "command": "clipreg.pasteRingItem"
+    "command": "clipring.pasteRingItem"
 }
 ```````````````
 
