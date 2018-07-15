@@ -1,26 +1,12 @@
 import * as vscode from 'vscode';
-import * as clipboard from 'copy-paste';
+import * as clipboard from 'clipboardy';
 
-export async function getContent(): Promise<string> {
-    return await new Promise<string>((resolve, reject) => {
-        clipboard.paste((err, content) => {
-            if(err)
-                reject(err);
-            else
-                resolve(content);
-        });
-    });
+export function getContent(): Promise<string> {
+    return clipboard.read()
 }
 
-export async function setContent<T>(content: T): Promise<T> {
-    return new Promise<T>((resolve, reject) => {
-        clipboard.copy(content, (err) => {
-            if (err) 
-                reject(err);
-            else
-                resolve(content);
-        });
-    });
+export function setContent(content: string): Promise<void> {
+    return clipboard.write(content)
 }
 
 export async function vscodeCopy(): Promise<void> {
