@@ -91,6 +91,18 @@ export async function pasteRingItem(ring: cring.ClipboardRing | null): Promise<v
     LastSelection = new SelectionSaver(editor.selections);
 }
 
+function textToString(text: string): string {
+    let result = ""
+    for (let line of text.split('\n')) {
+        result += line.replace(/\s+/g, " ") + "⏎"
+
+        if (result.length >= 20) {
+            break
+        }
+    }
+    return result
+}
+
 async function selectRingItem(ring: cring.ClipboardRing, placeHolder: string): Promise<number> {
     
     if (ring.empty()) {
@@ -104,7 +116,7 @@ async function selectRingItem(ring: cring.ClipboardRing, placeHolder: string): P
         let idx = 0;
         let items = ring.getAll().map((item): RingItemPick => {
             return {
-                label: item,
+                label: textToString(item),
                 index: idx++,
                 description: ""
             }
