@@ -92,15 +92,21 @@ export async function pasteRingItem(ring: cring.ClipboardRing | null): Promise<v
 }
 
 function textToString(text: string): string {
-    let result = ""
-    for (let line of text.split('\n')) {
-        result += line.replace(/\s+/g, " ") + "⏎"
+    let length = 0
 
-        if (result.length >= 20) {
-            break
+    let lines = text.split('\n').map(line => {
+        if (length >= 80) {
+            return ""
+        } else {
+            line = line.replace(/\s+/g, " ")
+            line = line.replace(/^\s+|\s+$/g, '')
+            length += line.length
+            return line
         }
-    }
-    return result
+    }).filter(line => line != "")
+
+
+    return lines.join(" ⏎ ")
 }
 
 async function selectRingItem(ring: cring.ClipboardRing, placeHolder: string): Promise<number> {

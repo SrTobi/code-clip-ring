@@ -2,7 +2,7 @@
     "name": "code-clip-ring",
     "displayName": "Clipboard Ring",
     "description": "A Visual Studio Code plugin that extends the clipboard and stores copied data in a ring storage.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "SirTobi",
     "author": {
         "name": "Tobias Kahlert (a.k.a SirTobi)"
