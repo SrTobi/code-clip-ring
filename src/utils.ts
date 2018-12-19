@@ -1,12 +1,13 @@
 import * as vscode from 'vscode';
-import * as clipboard from 'clipboardy';
 
-export function getContent(): Promise<string> {
-    return clipboard.read()
+const clipboard = vscode.env.clipboard
+
+export function getContent(): Thenable<string> {
+    return clipboard.readText()
 }
 
-export function setContent(content: string): Promise<void> {
-    return clipboard.write(content)
+export function setContent(content: string): Thenable<void> {
+    return clipboard.writeText(content)
 }
 
 export async function vscodeCopy(): Promise<void> {

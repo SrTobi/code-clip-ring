@@ -9,7 +9,7 @@
     },
     "homepage": "https://github.com/SrTobi/code-clip-ring",
     "engines": {
-        "vscode": "^0.10.1"
+        "vscode": "1.30.1"
     },
     "categories": [
         "Other"
@@ -110,12 +110,8 @@
         "url": "https://github.com/SrTobi/code-clip-ring/issues"
     },
     "devDependencies": {
-        "typescript": "^2.9.2",
-        "vscode": "^1.1.18",
-        "@types/node": "^10.5.2",
-        "@types/clipboardy": "^1.1.0"
-    },
-    "dependencies": {
-        "clipboardy": "^1.2.3"
+        "typescript": "^3.2.2",
+        "vscode": "^1.1.26",
+        "@types/node": "^10.12.17"
     }
 }
