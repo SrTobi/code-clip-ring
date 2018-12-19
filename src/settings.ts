@@ -10,8 +10,8 @@ export function getSettings(): Settings {
     let setting = vscode.workspace.getConfiguration("clipring");
     
     return {
-      maxRingItems: setting.get<number>("maxRingItems"),
-      itemToClipboardOnPaste: setting.get<boolean>("itemToClipboardOnPaste"),
-      backupClipboard: setting.get<boolean>("backupClipboard")
+      maxRingItems: setting.get<number>("maxRingItems")!,
+      itemToClipboardOnPaste: setting.get<boolean>("itemToClipboardOnPaste")!,
+      backupClipboard: setting.get<boolean>("backupClipboard")!
     };
 }
