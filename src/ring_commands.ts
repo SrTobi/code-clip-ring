@@ -122,7 +122,7 @@ async function selectRingItem(ring: cring.ClipboardRing, placeHolder: string): P
         let idx = 0;
         let items = ring.getAll().map((item): RingItemPick => {
             return {
-                label: textToString(item),
+                label: `${idx + 1}: ${textToString(item)}`,
                 index: idx++,
                 description: ""
             }
