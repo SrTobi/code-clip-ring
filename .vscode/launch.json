@@ -7,7 +7,7 @@
 			"type": "extensionHost",
 			"request": "launch",
 			"preLaunchTask": "watch",
-			"runtimeExecutable": "code",
+			"runtimeExecutable": "${execPath}",
 			"args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
 			"stopOnEntry": false,
 			"sourceMaps": true
