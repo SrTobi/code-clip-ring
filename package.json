@@ -72,6 +72,11 @@
                     "title": "Before any clipboard operation the current clipboard content is added to the ring. Set backupClipboard to false to disable this behavior.",
                     "default": true,
                     "type": "boolean"
+                },
+                "clipring.selectTextAfterPasteFromMenu": {
+                    "title": "Select pasted text after pasting it from ring menu.",
+                    "default": true,
+                    "type": "boolean"
                 }
             }
         },

@@ -150,7 +150,17 @@ export async function selectAndPasteRingItem(): Promise<void> {
         LastSelection = null;
         await ring.next(itemIdx);
         await pasteRingItem(ring);
+
+        let editor = vscode.window.activeTextEditor;
+        
+        if (editor && !getSettings().selectTextAfterPasteFromMenu) {
+            editor.selections = editor.selections.map(squashSelectionToEnd)
+        }
     }
+}
+
+function squashSelectionToEnd(sel: vscode.Selection): vscode.Selection {
+    return new vscode.Selection(sel.end, sel.end)
 }
 
 export async function removeRingItems() {
