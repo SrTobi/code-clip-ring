@@ -46,7 +46,17 @@ Use `"clipring.itemToClipboardOnPaste"` to disable this behavior.
 ```````````````json
 // Defaults
 "clipring.backupClipboard": true,
-"clipring.itemToClipboardOnPaste": true,
+"clipring.itemToClipboardOnPaste": true
+```````````````
+
+### Selection after pasting from menu
+
+If you don't like that the text is selected after pasting it from the menu,
+you can set `clipring.selectTextAfterPasteFromMenu` to `false`.
+
+```````````````json
+// Defaults
+"clipring.selectTextAfterPasteFromMenu": true,
 ```````````````
 
 ## Contributing
