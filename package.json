@@ -115,8 +115,8 @@
         "url": "https://github.com/SrTobi/code-clip-ring/issues"
     },
     "devDependencies": {
-        "@types/node": "^10.12.17",
-        "typescript": "^3.2.2",
-        "vscode": "^1.1.33"
+        "@types/node": "^12.0.7",
+        "typescript": "^3.5.1",
+        "vscode": "^1.1.34"
     }
 }
