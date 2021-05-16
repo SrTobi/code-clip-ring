@@ -102,10 +102,9 @@
         ]
     },
     "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
         "vscode:prepublish": "npm install && tsc -p .",
-        "compile": "tsc -watch -p .",
-        "watch": "tsc --watch"
+        "compile": "tsc -p .",
+        "watch": "tsc --watch -p ."
     },
     "repository": {
         "type": "git",
@@ -115,8 +114,8 @@
         "url": "https://github.com/SrTobi/code-clip-ring/issues"
     },
     "devDependencies": {
-        "@types/node": "^12.12.30",
-        "typescript": "^3.8.3",
-        "vscode": "^1.1.36"
+        "@types/node": "^15.3.0",
+        "@types/vscode": "^1.56.0",
+        "typescript": "^4.2.4"
     }
 }
